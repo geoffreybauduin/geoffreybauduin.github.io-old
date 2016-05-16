@@ -77,6 +77,50 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Datetime-and-localization-in-Python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/16/Datetime-and-localization-in-Python/" class="article-date">
+  <time datetime="2016-05-16T12:03:48.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Code/">Code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/16/Datetime-and-localization-in-Python/">Datetime and localization in Python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Last week, I came across an issue we frequently have on our architecture, at work. We are testing our software with SQLite on our computers, but the production server isn’t based on SQLite (don’t worry, we have a huge pipeline with testing to ensure this is working).</p>
+<p>A common issue we have, with SQLite, are date fields. Indeed, they are not localized in SQLite, and this is sometimes very annoying. We came up with this little workaround that I thought like sharing with you:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">localize_date</span><span class="params">(date)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> pytz.utc.localize(date)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="comment"># Exception raised if the date is already localized</span></span><br><span class="line">        <span class="keyword">return</span> date</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lght.github.io/2016/05/16/Datetime-and-localization-in-Python/" data-id="cio9ytxhv0000mz1yxm2znh0s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Working-with-promises-nested-http-requests-in-Angular-js" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/10/Working-with-promises-nested-http-requests-in-Angular-js/" class="article-date">
@@ -227,54 +271,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Forever-service-and-symlinks" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/20/Forever-service-and-symlinks/" class="article-date">
-  <time datetime="2015-02-20T17:04:13.000Z" itemprop="datePublished">2015-02-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>►<a class="article-category-link" href="/categories/Code/Admin-sys/">Admin sys</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/20/Forever-service-and-symlinks/">Forever service and symlinks</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>For those who have no clue what Forever is, just check here: <a href="https://github.com/foreverjs/forever" target="_blank" rel="external">https://github.com/foreverjs/forever</a> . It’s a basic NodeJS application that keeps a NodeJS running if it crashes or if it shutdowns.</p>
-<p>Today I’ve been contacted by a client asking some changes in a NodeJS server I developed. The change made, I just pushed and my continuous integration script on Codeship (<a href="http://codeship.io" target="_blank" rel="external">http://codeship.io</a>) synced everything and restarted the daemon.<br>I’ve been contacted a bit later by this client, saying that the problem he mentioned had not been fixed by my update. This is when I realized that something went wrong on the server, obviously, since everything was working locally.</p>
-<p>Basically, I create a folder for every push (of form YYYYMMDDHHMMSS), and I just update the symlink to the newest version, so that I don’t have to struggle to find the correct folder in which the newest application is.</p>
-<p>My init.d script has been generated automatically by <code>forever-service</code> (<a href="https://github.com/zapty/forever-service" target="_blank" rel="external">https://github.com/zapty/forever-service</a>), a Node module. It didn’t take the link path, but the target path (<code>/home/node/deploys/20141223100000</code> instead of <code>/home/node/current/</code>), so everytime I restarted my server, I ended up launching an old version of it.</p>
-<p>Quick fix:</p>
-<p><strong> Change the link to your folder under <code>/etc/init.d/node</code> </strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lght.github.io/2015/02/20/Forever-service-and-symlinks/" data-id="cio9ytxi10001mz1yymxgcan8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/forever/">forever</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/symlinks/">symlinks</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
@@ -284,7 +280,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/Admin-sys/">Admin sys</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Admin-sys/">Admin sys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li></ul>
     </div>
   </div>
 
