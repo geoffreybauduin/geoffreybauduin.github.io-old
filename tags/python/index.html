@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: redis | Developer&#39;s life</title>
+  <title>Tag: python | Developer&#39;s life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Blog about coding or admin sys depending on the days">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Developer's life">
-<meta property="og:url" content="http://lght.github.io/tags/redis/index.html">
+<meta property="og:url" content="http://lght.github.io/tags/python/index.html">
 <meta property="og:site_name" content="Developer's life">
 <meta property="og:description" content="Blog about coding or admin sys depending on the days">
 <meta name="twitter:card" content="summary">
@@ -77,16 +77,12 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-Redis-and-multiple-node-instances" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Datetime-and-localization-in-Python" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/03/02/Redis-and-multiple-node-instances/" class="article-date">
-  <time datetime="2015-03-02T10:28:50.000Z" itemprop="datePublished">2015-03-02</time>
+    <a href="/2016/05/16/Datetime-and-localization-in-Python/" class="article-date">
+  <time datetime="2016-05-16T12:03:48.000Z" itemprop="datePublished">2016-05-16</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -95,7 +91,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/Redis-and-multiple-node-instances/">Redis and multiple node instances</a>
+      <a class="article-title" href="/2016/05/16/Datetime-and-localization-in-Python/">Datetime and localization in Python</a>
     </h1>
   
 
@@ -103,16 +99,16 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Basically, when building a horizontal-scaling application, one of the problem I encoutered was <strong>how can I synchronize my Node.js instances so that they know what’s changed on another instance</strong> ?</p>
-<p>Well, after some researches, it seems that most developer use the <a href="http://redis.io/commands/publish" target="_blank" rel="external"><code>PUBLISH</code> command of Redis</a>, which consists in publishing a message onto a channel, while other processes are listening to this particular channel.</p>
-
+        <p>Last week, I came across an issue we frequently have on our architecture, at work. We are testing our software with SQLite on our computers, but the production server isn’t based on SQLite (don’t worry, we have a huge pipeline with testing to ensure this is working).</p>
+<p>A common issue we have, with SQLite, are date fields. Indeed, they are not localized in SQLite, and this is sometimes very annoying. We came up with this little workaround that I thought like sharing with you:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">localize_date</span><span class="params">(date)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> pytz.utc.localize(date)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="comment"># Exception raised if the date is already localized</span></span><br><span class="line">        <span class="keyword">return</span> date</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lght.github.io/2015/03/02/Redis-and-multiple-node-instances/" data-id="cio9ytxi60003mz1ykz2elxo5" class="article-share-link">Share</a>
+      <a data-url="http://lght.github.io/2016/05/16/Datetime-and-localization-in-Python/" data-id="cio9ytxhv0000mz1yxm2znh0s" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
