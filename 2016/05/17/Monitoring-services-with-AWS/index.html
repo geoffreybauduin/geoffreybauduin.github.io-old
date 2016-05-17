@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/3 | Developer&#39;s life</title>
+  <title>Monitoring services with AWS | Developer&#39;s life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog about coding or admin sys depending on the days">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Developer's life">
-<meta property="og:url" content="http://lght.github.io/archives/2015/03/index.html">
+  <meta name="description" content="Today, after having prodded some features on an app, I realized I forgot to add monitoring to my message queue consumer.
+Since we are using AWS, I don’t really know how to health check an application">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monitoring services with AWS">
+<meta property="og:url" content="http://lght.github.io/2016/05/17/Monitoring-services-with-AWS/index.html">
 <meta property="og:site_name" content="Developer's life">
-<meta property="og:description" content="Blog about coding or admin sys depending on the days">
+<meta property="og:description" content="Today, after having prodded some features on an app, I realized I forgot to add monitoring to my message queue consumer.
+Since we are using AWS, I don’t really know how to health check an application">
+<meta property="og:updated_time" content="2016-05-17T20:00:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Developer's life">
-<meta name="twitter:description" content="Blog about coding or admin sys depending on the days">
+<meta name="twitter:title" content="Monitoring services with AWS">
+<meta name="twitter:description" content="Today, after having prodded some features on an app, I realized I forgot to add monitoring to my message queue consumer.
+Since we are using AWS, I don’t really know how to health check an application">
   
     <link rel="alternate" href="/atom.xml" title="Developer&#39;s life" type="application/atom+xml">
   
@@ -75,16 +79,14 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Redis-and-multiple-node-instances" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Monitoring-services-with-AWS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/03/02/Redis-and-multiple-node-instances/" class="article-date">
-  <time datetime="2015-03-02T10:28:50.000Z" itemprop="datePublished">2015-03-02</time>
+    <a href="/2016/05/17/Monitoring-services-with-AWS/" class="article-date">
+  <time datetime="2016-05-17T19:55:30.000Z" itemprop="datePublished">2016-05-17</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>
+    <a class="article-category-link" href="/categories/Admin-sys/">Admin sys</a>
   </div>
 
   </div>
@@ -94,8 +96,8 @@ ga('send', 'pageview');
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/Redis-and-multiple-node-instances/">Redis and multiple node instances</a>
+    <h1 class="article-title" itemprop="name">
+      Monitoring services with AWS
     </h1>
   
 
@@ -103,24 +105,36 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Basically, when building a horizontal-scaling application, one of the problem I encoutered was <strong>how can I synchronize my Node.js instances so that they know what’s changed on another instance</strong> ?</p>
-<p>Well, after some researches, it seems that most developer use the <a href="http://redis.io/commands/publish" target="_blank" rel="external"><code>PUBLISH</code> command of Redis</a>, which consists in publishing a message onto a channel, while other processes are listening to this particular channel.</p>
+        <p>Today, after having prodded some features on an app, I realized I forgot to add monitoring to my message queue consumer.</p>
+<p>Since we are using AWS, I don’t really know how to health check an application without having a load balancer behind (or, at least, I did not find any way to do that, since the only health check I can have is named <code>EC2</code>).</p>
+<p>My first idea was to code some quick program in order to fullfil my needs, quickly, and be done with that, but then I realized that this kind of tool could be useful to anyone out there. So I crafted a little python microservice.</p>
+<p><a href="https://github.com/lght/aws-monitoring-tools" target="_blank" rel="external">You can find the service here</a>. It only consists of building a cron on top of it, calling the route <code>/</code> as soon as it wants to perform checks. If checks fails and meets alert criterias (hard coded for now), it will trigger an alert.</p>
+<p>The documentation is crappy, for now, and it’s only working with SQS, and sending emails if the queue is stuck (a.k.a my queue messages number keeps growing in the last 5 minutes).<br>I will try to add more stuff as it goes, hoping that other developers, like me, will contribute and add interesting features.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lght.github.io/2015/03/02/Redis-and-multiple-node-instances/" data-id="ciobv53an00053r1yu6o1rxyp" class="article-share-link">Share</a>
+      <a data-url="http://lght.github.io/2016/05/17/Monitoring-services-with-AWS/" data-id="ciobv53am00043r1yrzi4k4op" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
 
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/16/Datetime-and-localization-in-Python/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Datetime and localization in Python</div>
+    </a>
+  
+</nav>
 
   
+</article>
 
 </section>
         

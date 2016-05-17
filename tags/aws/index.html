@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/5 | Developer&#39;s life</title>
+  <title>Tag: aws | Developer&#39;s life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Blog about coding or admin sys depending on the days">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Developer's life">
-<meta property="og:url" content="http://lght.github.io/archives/2016/05/index.html">
+<meta property="og:url" content="http://lght.github.io/tags/aws/index.html">
 <meta property="og:site_name" content="Developer's life">
 <meta property="og:description" content="Blog about coding or admin sys depending on the days">
 <meta name="twitter:card" content="summary">
@@ -116,98 +116,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Datetime-and-localization-in-Python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/16/Datetime-and-localization-in-Python/" class="article-date">
-  <time datetime="2016-05-16T12:03:48.000Z" itemprop="datePublished">2016-05-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/16/Datetime-and-localization-in-Python/">Datetime and localization in Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Last week, I came across an issue we frequently have on our architecture, at work. We are testing our software with SQLite on our computers, but the production server isn’t based on SQLite (don’t worry, we have a huge pipeline with testing to ensure this is working).</p>
-<p>A common issue we have, with SQLite, are date fields. Indeed, they are not localized in SQLite, and this is sometimes very annoying. We came up with this little workaround that I thought like sharing with you:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">localize_date</span><span class="params">(date)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> pytz.utc.localize(date)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="comment"># Exception raised if the date is already localized</span></span><br><span class="line">        <span class="keyword">return</span> date</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lght.github.io/2016/05/16/Datetime-and-localization-in-Python/" data-id="ciobv53ah00013r1yy4u0mixf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Working-with-promises-nested-http-requests-in-Angular-js" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/10/Working-with-promises-nested-http-requests-in-Angular-js/" class="article-date">
-  <time datetime="2016-05-10T20:49:01.000Z" itemprop="datePublished">2016-05-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/10/Working-with-promises-nested-http-requests-in-Angular-js/">Working with promises: nested http requests in Angular.js</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It’s been a while since I posted here, but I thought I could share something that happened to me at work today.<br>I am now almost entirely dedicated to backend development, but sometimes, I need to take one for the team and work on frontend. We are using Angular, and we’ve been doing some amazing stuff so far with that.</p>
-<p>One of my colleague, who is totally new to Angular, was asking me about how I would do the following: “be able to execute the function of my choice when a 2-step http request has been performed”.</p>
-<p>Knowing some stuff about Angular, I directly told her she could use <em>promises</em>, with the <a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank" rel="external"><code>$q</code></a> package from Angular, and gave her some piece of code so that she could understand the whole thing.<br>I thought that it could be useful to someone else, so I am just going to leave this here</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> deferred = $q.defer();</span><br><span class="line">  $http.get(<span class="string">"http://a.com/first"</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    $http.get(<span class="string">"http://a.com/second"</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">      deferred.resolve(response);</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">      deferred.reject(response);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    deferred.reject(response);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> deferred.promise;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn1().then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"success"</span>);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"failure"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fn1().then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">"another success"</span>);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">"another failure"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>With this simple <code>fn1</code> function, you can have a multiple behaviors linked to the same requests process.</p>
-<p><a href="https://gist.github.com/lght/ea5b2e633463f87aacf2bbf61d5ee8c6" target="_blank" rel="external">Gist link</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lght.github.io/2016/05/10/Working-with-promises-nested-http-requests-in-Angular-js/" data-id="ciobv53au00093r1yo52kmlem" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-js/">angular.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
